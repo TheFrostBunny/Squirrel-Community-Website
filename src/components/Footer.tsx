@@ -45,7 +45,7 @@ export const Footer = () => {
         </div>
 
         <div className="border-t border-border mt-8 pt-8 text-center text-muted-foreground">
-          <p>© 2024 Squirrel Community. Made with 🐿️ and lots of nuts!</p>
+          <p>© 2025 Squirrel Community. Made with 🐿️ and lots of nuts!</p>
           <p className="text-sm mt-2">
             <span className="hidden-easter-egg cursor-pointer hover:text-autumn-orange transition-colors">
               🌰 Click here for a nutty surprise! 🌰
