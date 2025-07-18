@@ -61,7 +61,20 @@ export default {
 					'accent-foreground': 'hsl(var(--sidebar-accent-foreground))',
 					border: 'hsl(var(--sidebar-border))',
 					ring: 'hsl(var(--sidebar-ring))'
-				}
+				},
+				// Squirrel Community Colors
+				'squirrel-brown': 'hsl(var(--squirrel-brown))',
+				'forest-green': 'hsl(var(--forest-green))',
+				'moss-green': 'hsl(var(--moss-green))',
+				'autumn-orange': 'hsl(var(--autumn-orange))',
+				'acorn-tan': 'hsl(var(--acorn-tan))',
+				'tree-bark': 'hsl(var(--tree-bark))',
+				'leaf-green': 'hsl(var(--leaf-green))'
+			},
+			boxShadow: {
+				'soft': 'var(--shadow-soft)',
+				'warm': 'var(--shadow-warm)',
+				'glow': 'var(--shadow-glow)'
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
@@ -84,11 +97,41 @@ export default {
 					to: {
 						height: '0'
 					}
+				},
+				'squirrel-bounce': {
+					'0%, 100%': {
+						transform: 'translateY(0) rotate(-2deg)'
+					},
+					'50%': {
+						transform: 'translateY(-10px) rotate(2deg)'
+					}
+				},
+				'leaf-float': {
+					'0%, 100%': {
+						transform: 'translateY(0) rotate(0deg)'
+					},
+					'33%': {
+						transform: 'translateY(-5px) rotate(2deg)'
+					},
+					'66%': {
+						transform: 'translateY(3px) rotate(-1deg)'
+					}
+				},
+				'wiggle': {
+					'0%, 100%': {
+						transform: 'rotate(-3deg)'
+					},
+					'50%': {
+						transform: 'rotate(3deg)'
+					}
 				}
 			},
 			animation: {
 				'accordion-down': 'accordion-down 0.2s ease-out',
-				'accordion-up': 'accordion-up 0.2s ease-out'
+				'accordion-up': 'accordion-up 0.2s ease-out',
+				'squirrel-bounce': 'squirrel-bounce 2s ease-in-out infinite',
+				'leaf-float': 'leaf-float 4s ease-in-out infinite',
+				'wiggle': 'wiggle 1s ease-in-out infinite'
 			}
 		}
 	},
