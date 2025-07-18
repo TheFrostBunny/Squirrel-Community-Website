@@ -84,41 +84,66 @@ All colors MUST be HSL.
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
+    /* Dark Forest Night Theme */
+    --background: 20 25% 8%;
+    --foreground: 35 25% 95%;
 
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
+    --card: 20 30% 12%;
+    --card-foreground: 35 25% 95%;
 
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
+    --popover: 20 30% 12%;
+    --popover-foreground: 35 25% 95%;
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    /* Glowing amber as primary in dark mode */
+    --primary: 35 80% 65%;
+    --primary-foreground: 20 25% 8%;
 
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
+    /* Dark moss green as secondary */
+    --secondary: 90 15% 25%;
+    --secondary-foreground: 35 25% 95%;
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    /* Dark forest floor muted tones */
+    --muted: 20 15% 18%;
+    --muted-foreground: 35 15% 65%;
 
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
+    /* Bright autumn orange accent for dark mode */
+    --accent: 25 95% 75%;
+    --accent-foreground: 20 25% 8%;
 
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 35 25% 95%;
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-    --sidebar-background: 240 5.9% 10%;
-    --sidebar-foreground: 240 4.8% 95.9%;
-    --sidebar-primary: 224.3 76.3% 48%;
-    --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 240 3.7% 15.9%;
-    --sidebar-accent-foreground: 240 4.8% 95.9%;
-    --sidebar-border: 240 3.7% 15.9%;
-    --sidebar-ring: 217.2 91.2% 59.8%;
+    --border: 20 15% 22%;
+    --input: 20 15% 16%;
+    --ring: 35 80% 65%;
+
+    /* Dark mode custom squirrel community colors */
+    --squirrel-brown: 25 60% 55%;
+    --forest-green: 120 25% 35%;
+    --moss-green: 90 15% 35%;
+    --autumn-orange: 25 95% 75%;
+    --acorn-tan: 35 50% 60%;
+    --tree-bark: 20 20% 15%;
+    --leaf-green: 95 30% 50%;
+
+    /* Dark mode gradients */
+    --gradient-forest: linear-gradient(135deg, hsl(var(--forest-green)), hsl(var(--moss-green)));
+    --gradient-autumn: linear-gradient(135deg, hsl(var(--autumn-orange)), hsl(var(--acorn-tan)));
+    --gradient-earth: linear-gradient(180deg, hsl(var(--background)), hsl(var(--tree-bark)));
+
+    /* Enhanced dark shadows */
+    --shadow-soft: 0 4px 12px hsl(var(--tree-bark) / 0.4);
+    --shadow-warm: 0 8px 24px hsl(var(--squirrel-brown) / 0.3);
+    --shadow-glow: 0 0 30px hsl(var(--autumn-orange) / 0.4);
+
+    --sidebar-background: 20 25% 10%;
+    --sidebar-foreground: 35 25% 90%;
+    --sidebar-primary: 35 80% 65%;
+    --sidebar-primary-foreground: 20 25% 8%;
+    --sidebar-accent: 20 20% 15%;
+    --sidebar-accent-foreground: 35 25% 90%;
+    --sidebar-border: 20 15% 20%;
+    --sidebar-ring: 35 80% 65%;
   }
 }
 
