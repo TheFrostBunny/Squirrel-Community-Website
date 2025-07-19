@@ -5,6 +5,9 @@ import { SquirrelCare } from '@/components/SquirrelCare';
 import { CommunityInfo } from '@/components/CommunityInfo';
 import { Footer } from '@/components/Footer';
 import { FloatingSquirrels } from '@/components/FloatingSquirrels';
+import { SquirrelNeighborhood } from '@/components/SquirrelNeighborhood';
+import { EasterEggs } from '@/components/EasterEggs';
+import { GameCenter } from '@/components/GameCenter';
 
 const Index = () => {
   return (
@@ -17,7 +20,10 @@ const Index = () => {
         </div>
         <JoinDiscord />
         <SquirrelCare />
+        <GameCenter />
+        <SquirrelNeighborhood />
         <CommunityInfo />
+        <EasterEggs />
       </main>
       <Footer />
     </div>
