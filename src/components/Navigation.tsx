@@ -45,7 +45,7 @@ export const Navigation = () => {
             <ThemeToggle />
             <Button 
               className="btn-squirrel"
-              onClick={() => window.open('https://discord.gg/squirrel-community', '_blank')}
+              onClick={() => window.open('https://discord.com/invite/UGUjdgD5Mb', '_blank')}
             >
               Join Discord
             </Button>
