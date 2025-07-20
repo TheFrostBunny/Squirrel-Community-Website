@@ -2,15 +2,17 @@ import { useState } from 'react';
 import { Button } from '@/components/ui/button';
 import { Menu, X } from 'lucide-react';
 import { ThemeToggle } from './ThemeToggle';
+import { useText } from '@/hooks/useText';
 
 export const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { getText } = useText();
 
   const navItems = [
-    { label: 'Home', href: '#home' },
-    { label: 'Join Discord', href: '#join-discord' },
-    { label: 'Squirrel Care', href: '#squirrel-care' },
-    { label: 'Community', href: '#community-info' }
+    { label: getText('navigation.menuItems.home'), href: '#home' },
+    { label: getText('navigation.menuItems.joinDiscord'), href: '#join-discord' },
+    { label: getText('navigation.menuItems.squirrelCare'), href: '#squirrel-care' },
+    { label: getText('navigation.menuItems.community'), href: '#community-info' }
   ];
 
   const scrollToSection = (href: string) => {
@@ -28,7 +30,7 @@ export const Navigation = () => {
           {/* Logo */}
           <div className="flex items-center gap-2">
             <span className="text-2xl">🐿️</span>
-            <span className="font-bold text-lg text-squirrel-brown">Squirrel Community</span>
+            <span className="font-bold text-lg text-squirrel-brown">{getText('navigation.logo')}</span>
           </div>
 
           {/* Desktop Navigation */}
@@ -47,7 +49,7 @@ export const Navigation = () => {
               className="btn-squirrel"
               onClick={() => window.open('https://discord.com/invite/UGUjdgD5Mb', '_blank')}
             >
-              Join Discord
+              {getText('navigation.buttons.joinDiscord')}
             </Button>
           </div>
 
@@ -84,7 +86,7 @@ export const Navigation = () => {
                   setIsOpen(false);
                 }}
               >
-                Join Discord
+                {getText('navigation.buttons.joinDiscord')}
               </Button>
             </div>
           </div>

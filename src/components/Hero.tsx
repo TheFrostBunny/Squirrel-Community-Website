@@ -3,11 +3,13 @@ import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import squirrelMascot from '@/assets/squirrel-mascot.png';
 import forestHeroBg from '@/assets/forest-hero-bg.jpg';
+import { useText } from '@/hooks/useText';
 
 export const Hero = () => {
   const [mascotClicks, setMascotClicks] = useState(0);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
   const [isVisible, setIsVisible] = useState(false);
+  const { getText } = useText();
 
   // Parallax mouse effect
   useEffect(() => {
@@ -31,7 +33,7 @@ export const Hero = () => {
     setMascotClicks(prev => prev + 1);
     // Easter egg for multiple clicks
     if (mascotClicks + 1 === 5) {
-      console.log('🐿️ Squirrel says: "Nuts about you clicking me!"');
+      console.log(getText('hero.easterEgg'));
     }
   };
 
@@ -87,7 +89,7 @@ export const Hero = () => {
         {/* Community Badge */}
         <div className="mb-6 animate-fade-in" style={{ animationDelay: '0.2s' }}>
           <Badge className="bg-gradient-to-r from-autumn-orange/90 to-forest-green/90 text-white px-6 py-2 text-sm font-medium">
-            ✨ 500+ Happy Members & Growing!
+            {getText('hero.badge')}
           </Badge>
         </div>
 
@@ -104,7 +106,7 @@ export const Hero = () => {
             {/* Main mascot */}
             <img 
               src={squirrelMascot} 
-              alt="Squirrel Community Mascot" 
+              alt={getText('hero.mascot.alt')} 
               className={`relative w-80 h-80 mx-auto drop-shadow-2xl transition-all duration-500 group-hover:scale-110 ${
                 mascotClicks > 3 ? 'animate-wiggle' : 'squirrel-bounce'
               }`}
@@ -128,22 +130,20 @@ export const Hero = () => {
           style={{ animationDelay: '0.6s' }}
         >
           <h1 className="text-6xl md:text-8xl font-bold mb-6 leading-tight">
-            <span className="block text-squirrel-brown mb-2">Welcome to</span>
+            <span className="block text-squirrel-brown mb-2">{getText('hero.title.welcomeTo')}</span>
             <span className="block bg-gradient-to-r from-autumn-orange via-forest-green to-moss-green bg-clip-text text-transparent">
-              Squirrel Community
+              {getText('hero.title.squirrelCommunity')}
             </span>
           </h1>
           
           <div className="card-cozy max-w-3xl mx-auto backdrop-blur-md bg-card/70">
             <p className="text-2xl md:text-3xl text-muted-foreground mb-6 leading-relaxed">
-              A cozy corner of the internet where{' '}
-              <span className="text-autumn-orange font-semibold">friendship grows</span>{' '}
-              like acorns in autumn! 🐿️
+              {getText('hero.description.main')}
             </p>
             <p className="text-lg text-muted-foreground">
-              Join our wholesome Discord community for gaming, chatting, creative sharing, and endless fun.
+              {getText('hero.description.subtitle')}
               <br />
-              <span className="text-forest-green font-medium">Everyone is welcome in our digital forest!</span>
+              <span className="text-forest-green font-medium">{getText('hero.description.welcome')}</span>
             </p>
           </div>
         </div>
@@ -158,7 +158,7 @@ export const Hero = () => {
             onClick={handleJoinDiscord}
           >
             <span className="mr-2">🎮</span>
-            Join Our Discord
+            {getText('hero.buttons.joinDiscord')}
             <span className="ml-2">✨</span>
           </Button>
           
@@ -168,7 +168,7 @@ export const Hero = () => {
             onClick={scrollToCommunity}
           >
             <span className="mr-2">🌰</span>
-            Explore Community
+            {getText('hero.buttons.exploreCommunity')}
           </Button>
         </div>
 
@@ -184,13 +184,13 @@ export const Hero = () => {
                   ? (
                     <>
                       <span className="text-2xl mr-2">🐿️</span>
-                      Squirrel happiness: {mascotClicks}/5
+                      {getText('hero.mascot.happiness', { count: mascotClicks })}
                       <span className="ml-2">{'⭐'.repeat(mascotClicks)}</span>
                     </>
                   ) : (
                     <>
                       <span className="text-2xl mr-2">🎉</span>
-                      Maximum squirrel happiness achieved!
+                      {getText('hero.mascot.maxHappiness')}
                       <span className="ml-2">🌟✨🎊</span>
                     </>
                   )
@@ -206,7 +206,7 @@ export const Hero = () => {
           style={{ animationDelay: '1.2s' }}
         >
           <div className="text-muted-foreground text-center">
-            <div className="text-sm mb-2">Scroll to explore</div>
+            <div className="text-sm mb-2">{getText('hero.scrollIndicator')}</div>
             <div className="text-2xl">⬇️</div>
           </div>
         </div>

@@ -1,0 +1,283 @@
+{
+  "navigation": {
+    "logo": "Squirrel Community",
+    "menuItems": {
+      "home": "Home",
+      "joinDiscord": "Join Discord",
+      "squirrelCare": "Squirrel Care",
+      "community": "Community"
+    },
+    "buttons": {
+      "joinDiscord": "Join Discord"
+    }
+  },
+  "hero": {
+    "badge": "✨ 500+ Happy Members & Growing!",
+    "title": {
+      "welcomeTo": "Welcome to",
+      "squirrelCommunity": "Squirrel Community"
+    },
+    "description": {
+      "main": "A cozy corner of the internet where friendship grows like acorns in autumn! 🐿️",
+      "subtitle": "Join our wholesome Discord community for gaming, chatting, creative sharing, and endless fun.",
+      "welcome": "Everyone is welcome in our digital forest!"
+    },
+    "buttons": {
+      "joinDiscord": "Join Our Discord",
+      "exploreCommunity": "Explore Community"
+    },
+    "mascot": {
+      "alt": "Squirrel Community Mascot",
+      "happiness": "Squirrel happiness: {count}/5",
+      "maxHappiness": "Maximum squirrel happiness achieved!"
+    },
+    "scrollIndicator": "Scroll to explore",
+    "easterEgg": "🐿️ Squirrel says: \"Nuts about you clicking me!\""
+  },
+  "squirrelCare": {
+    "title": "🐿️ Virtual Squirrel Care",
+    "subtitle": "Take care of your virtual squirrel companion!",
+    "stats": {
+      "happiness": "Happiness",
+      "energy": "Energy",
+      "hunger": "Hunger",
+      "health": "Health"
+    },
+    "actions": {
+      "feed": "Feed Acorn",
+      "play": "Play",
+      "sleep": "Sleep",
+      "exercise": "Exercise"
+    },
+    "food": {
+      "acorn": "Acorn",
+      "berries": "Berries",
+      "nuts": "Mixed Nuts",
+      "seeds": "Seeds"
+    },
+    "activities": {
+      "fetchStick": "Fetch Stick",
+      "jumpBranches": "Jump Branches",
+      "hideNuts": "Hide Nuts",
+      "exploreTrees": "Explore Trees"
+    },
+    "accessories": {
+      "hat": "Party Hat",
+      "bow": "Bow Tie",
+      "scarf": "Cozy Scarf",
+      "crown": "Royal Crown"
+    },
+    "achievements": {
+      "title": "Achievements",
+      "wellFed": "Well Fed - Fed 10 times",
+      "energetic": "Energetic - Played 5 times",
+      "restful": "Restful - Slept 3 times",
+      "healthy": "Healthy - Maintained high health",
+      "happy": "Happy Squirrel - Reached max happiness"
+    },
+    "messages": {
+      "feeding": "Yummy! Your squirrel loved the {food}!",
+      "playing": "So much fun! Your squirrel enjoyed {activity}!",
+      "sleeping": "Zzz... Your squirrel had a peaceful nap!",
+      "exercising": "Great workout! Your squirrel feels energized!",
+      "lowStats": "Your squirrel needs attention!"
+    }
+  },
+  "squirrelNeighborhood": {
+    "title": "🏘️ Squirrel Neighborhood",
+    "subtitle": "Visit friends and explore the community!",
+    "tabs": {
+      "friends": "Friends",
+      "nutNotes": "Nut Notes",
+      "visits": "Visits"
+    },
+    "friends": {
+      "addFriend": "Add Friend",
+      "visit": "Visit",
+      "online": "Online",
+      "offline": "Offline"
+    },
+    "nutNotes": {
+      "placeholder": "Share your nutty thoughts...",
+      "post": "Post Note",
+      "timeAgo": "{time} ago"
+    },
+    "visits": {
+      "recent": "Recent Visits",
+      "noVisits": "No recent visits",
+      "visitedBy": "Visited by {friend}"
+    }
+  },
+  "gameCenter": {
+    "title": "🎮 Squirrel Game Center",
+    "subtitle": "Play mini-games to earn nuts, coins, and experience!",
+    "tabs": {
+      "games": "Mini Games",
+      "scores": "High Scores"
+    },
+    "games": {
+      "nutCatch": {
+        "name": "Nut Catcher",
+        "description": "Catch falling acorns with your basket!",
+        "instructions": {
+          "mobile": "📱 Mobile: Touch and drag to move basket",
+          "desktop": "💻 Desktop: Move mouse to control basket"
+        }
+      },
+      "memoryMatch": {
+        "name": "Squirrel Memory",
+        "description": "Match pairs of forest symbols!",
+        "instructions": "Tap cards to flip them and find matching pairs!",
+        "progress": "{found} / 8 pairs found"
+      },
+      "quickClick": {
+        "name": "Lightning Reflexes",
+        "description": "Click the targets before they disappear!",
+        "instructions": "Tap the targets as fast as you can!",
+        "targetsHit": "Targets hit: {count}"
+      },
+      "treeJump": {
+        "name": "Tree Jumping",
+        "description": "Help the squirrel jump between branches!"
+      }
+    },
+    "difficulty": {
+      "easy": "easy",
+      "medium": "medium", 
+      "hard": "hard"
+    },
+    "ui": {
+      "score": "Score: {score}",
+      "time": "Time: {time}s",
+      "moves": "Moves: {moves}",
+      "playNow": "Play Now",
+      "backToCenter": "← Back to Game Center",
+      "highScore": "Best: {score}",
+      "noScores": "No games played yet"
+    }
+  },
+  "easterEggs": {
+    "title": "🎯 Easter Egg Collection",
+    "subtitle": "Find hidden surprises around the site!",
+    "found": "Found: {count}/{total}",
+    "hints": {
+      "title": "Hints",
+      "hint1": "🐿️ Click the mascot multiple times in the hero section",
+      "hint2": "🌰 Look for clickable nuts in unexpected places",
+      "hint3": "🎮 Play games to unlock special rewards",
+      "hint4": "👀 Some text might be hiding secrets...",
+      "hint5": "🌙 Dark mode might reveal hidden elements"
+    },
+    "collection": {
+      "title": "Your Collection",
+      "empty": "Start exploring to find easter eggs!",
+      "golden": "Golden Acorn",
+      "secret": "Secret Squirrel",
+      "hidden": "Hidden Treasure",
+      "bonus": "Bonus Nut",
+      "special": "Special Find"
+    }
+  },
+  "joinDiscord": {
+    "title": "Join Our Cozy Discord Community! 🐿️",
+    "subtitle": "Connect with fellow squirrels from around the world",
+    "features": {
+      "title": "What makes us special?",
+      "gaming": {
+        "title": "🎮 Gaming Together",
+        "description": "From indie gems to AAA titles, we love gaming together!"
+      },
+      "creative": {
+        "title": "🎨 Creative Corner",
+        "description": "Share your art, music, writing, and creative projects!"
+      },
+      "chat": {
+        "title": "💬 Friendly Chats",
+        "description": "Daily conversations, memes, and wholesome discussions!"
+      },
+      "events": {
+        "title": "🎉 Community Events",
+        "description": "Regular game nights, movie streams, and special activities!"
+      },
+      "support": {
+        "title": "🤗 Supportive Space",
+        "description": "A safe, welcoming environment for everyone!"
+      },
+      "global": {
+        "title": "🌍 Global Community",
+        "description": "Members from all time zones - there's always someone online!"
+      }
+    },
+    "stats": {
+      "members": "500+ Active Members",
+      "online": "Always Someone Online",
+      "channels": "Multiple Topic Channels"
+    },
+    "button": "Join Discord Server",
+    "community": "Be part of something special! 🌰"
+  },
+  "communityInfo": {
+    "title": "Our Squirrel Community",
+    "subtitle": "Learn more about what makes our forest special",
+    "values": {
+      "title": "Our Values",
+      "respect": {
+        "title": "🤝 Respect",
+        "description": "We treat everyone with kindness and respect"
+      },
+      "inclusivity": {
+        "title": "🌈 Inclusivity", 
+        "description": "Everyone is welcome regardless of background"
+      },
+      "fun": {
+        "title": "🎉 Fun",
+        "description": "We believe in keeping things light and enjoyable"
+      },
+      "creativity": {
+        "title": "✨ Creativity",
+        "description": "We encourage sharing and creating together"
+      }
+    },
+    "rules": {
+      "title": "Community Guidelines",
+      "beKind": "Be kind and respectful to all members",
+      "noSpam": "Keep conversations relevant and avoid spam",
+      "familyFriendly": "Maintain a family-friendly environment",
+      "helpOthers": "Help new members feel welcome"
+    }
+  },
+  "footer": {
+    "description": "A cozy Discord server where friendship grows like acorns in autumn. Join our wholesome community for gaming, chatting, and endless fun!",
+    "quickLinks": {
+      "title": "Quick Links",
+      "home": "Home",
+      "joinDiscord": "Join Discord", 
+      "squirrelCare": "Squirrel Care",
+      "communityInfo": "Community Info"
+    },
+    "community": {
+      "title": "Community",
+      "discordServer": "Discord Server",
+      "communityRules": "Community Rules",
+      "eventsCalendar": "Events Calendar",
+      "support": "Support"
+    },
+    "copyright": "© 2025 Squirrel Community. Made with 🐿️ and lots of nuts!",
+    "easterEgg": "🌰 Click here for a nutty surprise! 🌰"
+  },
+  "theme": {
+    "toggle": "Toggle theme",
+    "light": "Light mode",
+    "dark": "Dark mode"
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Something went wrong",
+    "retry": "Try again",
+    "back": "Back",
+    "next": "Next",
+    "close": "Close",
+    "save": "Save",
+    "cancel": "Cancel"
+  }
+}
