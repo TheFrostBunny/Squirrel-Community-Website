@@ -276,21 +276,40 @@ export const GameCenter = () => {
           {activeGame === 'nut-catch' && (
             <Card className="card-cozy">
               <CardHeader className="text-center">
-                <CardTitle>🌰 Nut Catcher</CardTitle>
-                <div className="flex justify-between items-center">
-                  <Badge variant="outline">Score: {nutCatchScore}</Badge>
-                  <Badge variant="outline">Time: {gameTime}s</Badge>
+                <CardTitle className="text-2xl md:text-3xl">🌰 Nut Catcher</CardTitle>
+                <div className="flex justify-center gap-4">
+                  <Badge variant="outline" className="text-lg px-3 py-1">Score: {nutCatchScore}</Badge>
+                  <Badge variant="outline" className="text-lg px-3 py-1">Time: {gameTime}s</Badge>
                 </div>
               </CardHeader>
               <CardContent>
-                <div className="relative h-96 bg-gradient-to-b from-sky-200 to-green-200 rounded-lg overflow-hidden">
+                <div 
+                  className="relative h-80 md:h-96 bg-gradient-to-b from-sky-200 to-green-200 rounded-lg overflow-hidden touch-none select-none"
+                  onTouchMove={(e) => {
+                    e.preventDefault();
+                    const rect = e.currentTarget.getBoundingClientRect();
+                    const touch = e.touches[0];
+                    if (touch && rect) {
+                      const x = ((touch.clientX - rect.left) / rect.width) * 100;
+                      setNutCatchPosition(Math.max(10, Math.min(90, x)));
+                    }
+                  }}
+                  onMouseMove={(e) => {
+                    const rect = e.currentTarget.getBoundingClientRect();
+                    if (rect) {
+                      const x = ((e.clientX - rect.left) / rect.width) * 100;
+                      setNutCatchPosition(Math.max(10, Math.min(90, x)));
+                    }
+                  }}
+                >
                   {/* Falling Nuts */}
                   {fallingNuts.map(nut => (
                     <div
                       key={nut.id}
-                      className="absolute text-2xl cursor-pointer"
+                      className="absolute text-3xl md:text-2xl cursor-pointer touch-manipulation"
                       style={{ left: `${nut.x}%`, top: `${nut.y}%` }}
                       onClick={() => catchNut(nut.id)}
+                      onTouchStart={() => catchNut(nut.id)}
                     >
                       🌰
                     </div>
@@ -298,22 +317,20 @@ export const GameCenter = () => {
                   
                   {/* Basket */}
                   <div
-                    className="absolute bottom-4 text-4xl cursor-pointer"
+                    className="absolute bottom-4 text-5xl md:text-4xl pointer-events-none"
                     style={{ left: `${nutCatchPosition}%`, transform: 'translateX(-50%)' }}
-                    onMouseMove={(e) => {
-                      const rect = e.currentTarget.parentElement?.getBoundingClientRect();
-                      if (rect) {
-                        const x = ((e.clientX - rect.left) / rect.width) * 100;
-                        setNutCatchPosition(Math.max(10, Math.min(90, x)));
-                      }
-                    }}
                   >
                     🧺
                   </div>
                 </div>
-                <p className="text-center text-sm text-muted-foreground mt-4">
-                  Move your mouse to control the basket and catch falling nuts!
-                </p>
+                <div className="mt-4 space-y-2">
+                  <p className="text-center text-sm text-muted-foreground">
+                    📱 Mobile: Touch and drag to move basket
+                  </p>
+                  <p className="text-center text-sm text-muted-foreground">
+                    💻 Desktop: Move mouse to control basket
+                  </p>
+                </div>
               </CardContent>
             </Card>
           )}
@@ -321,28 +338,36 @@ export const GameCenter = () => {
           {activeGame === 'memory-match' && (
             <Card className="card-cozy">
               <CardHeader className="text-center">
-                <CardTitle>🧠 Squirrel Memory</CardTitle>
-                <Badge variant="outline">Moves: {memoryMoves}</Badge>
+                <CardTitle className="text-2xl md:text-3xl">🧠 Squirrel Memory</CardTitle>
+                <Badge variant="outline" className="text-lg px-3 py-1">Moves: {memoryMoves}</Badge>
               </CardHeader>
               <CardContent>
-                <div className="grid grid-cols-4 gap-4 max-w-md mx-auto">
+                <div className="grid grid-cols-4 gap-2 md:gap-4 max-w-sm md:max-w-md mx-auto">
                   {memoryCards.map((card, index) => (
                     <div
                       key={card.id}
-                      className={`aspect-square rounded-lg border-2 flex items-center justify-center text-3xl cursor-pointer transition-all ${
+                      className={`aspect-square rounded-lg border-2 flex items-center justify-center text-2xl md:text-3xl cursor-pointer transition-all touch-manipulation active:scale-95 ${
                         card.flipped || card.matched 
-                          ? 'bg-primary/20 border-primary' 
-                          : 'bg-muted hover:bg-muted/80 border-muted-foreground'
+                          ? 'bg-primary/20 border-primary shadow-md' 
+                          : 'bg-muted hover:bg-muted/80 border-muted-foreground hover:shadow-sm'
                       }`}
                       onClick={() => flipMemoryCard(index)}
+                      onTouchStart={() => flipMemoryCard(index)}
                     >
                       {card.flipped || card.matched ? card.symbol : '❓'}
                     </div>
                   ))}
                 </div>
-                <p className="text-center text-sm text-muted-foreground mt-4">
-                  Find matching pairs of forest symbols!
-                </p>
+                <div className="mt-4 space-y-2">
+                  <p className="text-center text-sm text-muted-foreground">
+                    Tap cards to flip them and find matching pairs!
+                  </p>
+                  <div className="text-center">
+                    <Badge variant="secondary" className="text-sm">
+                      {memoryCards.filter(card => card.matched).length / 2} / 8 pairs found
+                    </Badge>
+                  </div>
+                </div>
               </CardContent>
             </Card>
           )}
@@ -350,28 +375,48 @@ export const GameCenter = () => {
           {activeGame === 'quick-click' && (
             <Card className="card-cozy">
               <CardHeader className="text-center">
-                <CardTitle>⚡ Lightning Reflexes</CardTitle>
-                <div className="flex justify-between items-center">
-                  <Badge variant="outline">Score: {clickScore}</Badge>
-                  <Badge variant="outline">Time: {clickTimeLeft}s</Badge>
+                <CardTitle className="text-2xl md:text-3xl">⚡ Lightning Reflexes</CardTitle>
+                <div className="flex justify-center gap-4">
+                  <Badge variant="outline" className="text-lg px-3 py-1">Score: {clickScore}</Badge>
+                  <Badge variant="outline" className="text-lg px-3 py-1">Time: {clickTimeLeft}s</Badge>
                 </div>
               </CardHeader>
               <CardContent>
-                <div className="relative h-96 bg-gradient-to-br from-purple-200 to-pink-200 rounded-lg overflow-hidden">
+                <div className="relative h-80 md:h-96 bg-gradient-to-br from-purple-200 to-pink-200 rounded-lg overflow-hidden touch-none">
                   {clickTargets.map(target => (
                     <div
                       key={target.id}
-                      className="absolute w-12 h-12 bg-red-500 rounded-full cursor-pointer flex items-center justify-center text-white font-bold animate-pulse hover:scale-110 transition-transform"
-                      style={{ left: `${target.x}%`, top: `${target.y}%` }}
+                      className="absolute w-14 h-14 md:w-12 md:h-12 bg-red-500 rounded-full cursor-pointer flex items-center justify-center text-white font-bold animate-pulse hover:scale-110 active:scale-95 transition-transform touch-manipulation"
+                      style={{ 
+                        left: `${Math.max(5, Math.min(85, target.x))}%`, 
+                        top: `${Math.max(5, Math.min(85, target.y))}%`,
+                        transform: 'translate(-50%, -50%)'
+                      }}
                       onClick={() => clickTarget(target.id)}
+                      onTouchStart={(e) => {
+                        e.preventDefault();
+                        clickTarget(target.id);
+                      }}
                     >
                       🎯
                     </div>
                   ))}
+                  {clickTargets.length === 0 && (
+                    <div className="absolute inset-0 flex items-center justify-center text-6xl opacity-20">
+                      ⚡
+                    </div>
+                  )}
                 </div>
-                <p className="text-center text-sm text-muted-foreground mt-4">
-                  Click the targets as fast as you can!
-                </p>
+                <div className="mt-4 space-y-2">
+                  <p className="text-center text-sm text-muted-foreground">
+                    Tap the targets as fast as you can!
+                  </p>
+                  <div className="text-center">
+                    <Badge variant="secondary" className="text-sm">
+                      Targets hit: {clickScore}
+                    </Badge>
+                  </div>
+                </div>
               </CardContent>
             </Card>
           )}
@@ -399,46 +444,46 @@ export const GameCenter = () => {
           </TabsList>
 
           <TabsContent value="games" className="mt-6">
-            <div className="grid md:grid-cols-2 gap-6">
+            <div className="grid gap-4 md:gap-6 md:grid-cols-2">
               {miniGames.map((game) => (
-                <Card key={game.id} className="card-cozy hover:shadow-lg transition-shadow">
-                  <CardHeader>
+                <Card key={game.id} className="card-cozy hover:shadow-lg transition-all active:scale-[0.98] touch-manipulation">
+                  <CardHeader className="pb-4">
                     <div className="flex items-center gap-3">
-                      <div className="text-4xl">{game.icon}</div>
-                      <div className="flex-1">
-                        <CardTitle>{game.name}</CardTitle>
-                        <CardDescription>{game.description}</CardDescription>
+                      <div className="text-3xl md:text-4xl">{game.icon}</div>
+                      <div className="flex-1 min-w-0">
+                        <CardTitle className="text-lg md:text-xl truncate">{game.name}</CardTitle>
+                        <CardDescription className="text-sm md:text-base">{game.description}</CardDescription>
                       </div>
                     </div>
-                    <div className="flex gap-2">
-                      <Badge className={getDifficultyColor(game.difficulty)}>
+                    <div className="flex flex-wrap gap-2">
+                      <Badge className={`${getDifficultyColor(game.difficulty)} text-xs md:text-sm`}>
                         {game.difficulty}
                       </Badge>
-                      <Badge variant="outline">
-                        High Score: {getHighScore(game.id)}
+                      <Badge variant="outline" className="text-xs md:text-sm">
+                        Best: {getHighScore(game.id)}
                       </Badge>
                     </div>
                   </CardHeader>
-                  <CardContent className="space-y-4">
-                    <div className="grid grid-cols-3 gap-4 text-center">
-                      <div>
-                        <p className="text-2xl">🌰</p>
-                        <p className="text-sm font-medium">{game.rewards.nuts}</p>
+                  <CardContent className="space-y-3 md:space-y-4 pt-0">
+                    <div className="grid grid-cols-3 gap-2 md:gap-4 text-center">
+                      <div className="p-2 md:p-3 bg-muted/30 rounded-lg">
+                        <p className="text-xl md:text-2xl">🌰</p>
+                        <p className="text-xs md:text-sm font-medium">{game.rewards.nuts}</p>
                       </div>
-                      <div>
-                        <p className="text-2xl">💰</p>
-                        <p className="text-sm font-medium">{game.rewards.coins}</p>
+                      <div className="p-2 md:p-3 bg-muted/30 rounded-lg">
+                        <p className="text-xl md:text-2xl">💰</p>
+                        <p className="text-xs md:text-sm font-medium">{game.rewards.coins}</p>
                       </div>
-                      <div>
-                        <p className="text-2xl">⭐</p>
-                        <p className="text-sm font-medium">{game.rewards.exp}</p>
+                      <div className="p-2 md:p-3 bg-muted/30 rounded-lg">
+                        <p className="text-xl md:text-2xl">⭐</p>
+                        <p className="text-xs md:text-sm font-medium">{game.rewards.exp}</p>
                       </div>
                     </div>
                     <Button 
-                      className="w-full btn-squirrel"
+                      className="w-full btn-squirrel text-base md:text-lg py-3 md:py-4 touch-manipulation"
                       onClick={() => startGame(game.id)}
                     >
-                      <Gamepad2 className="w-4 h-4 mr-2" />
+                      <Gamepad2 className="w-5 h-5 mr-2" />
                       Play Now
                     </Button>
                   </CardContent>
