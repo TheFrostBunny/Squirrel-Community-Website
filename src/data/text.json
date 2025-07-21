@@ -270,6 +270,63 @@
     "light": "Light mode",
     "dark": "Dark mode"
   },
+  "socialHub": {
+    "title": "🤝 Social Hub",
+    "subtitle": "Connect with fellow squirrels and explore the community!",
+    "tabs": {
+      "friends": "Friends",
+      "feed": "Community Feed",
+      "profile": "My Profile"
+    },
+    "friends": {
+      "title": "My Friends",
+      "addFriend": "Add Friend",
+      "searchPlaceholder": "Search for friends...",
+      "online": "Online",
+      "offline": "Offline",
+      "sendMessage": "Send Message",
+      "viewProfile": "View Profile",
+      "removeFriend": "Remove Friend",
+      "noFriends": "No friends yet. Start by adding some!",
+      "friendRequests": "Friend Requests",
+      "accept": "Accept",
+      "decline": "Decline"
+    },
+    "feed": {
+      "title": "Community Feed",
+      "shareUpdate": "Share an update...",
+      "post": "Post",
+      "noUpdates": "No updates yet. Be the first to share!",
+      "like": "Like",
+      "comment": "Comment",
+      "share": "Share",
+      "timeAgo": "{time} ago",
+      "showComments": "Show comments",
+      "hideComments": "Hide comments",
+      "writeComment": "Write a comment...",
+      "postComment": "Post Comment"
+    },
+    "profile": {
+      "title": "My Profile",
+      "editProfile": "Edit Profile",
+      "achievements": "Achievements",
+      "stats": "Statistics",
+      "squirrelCollection": "My Squirrels",
+      "recentActivity": "Recent Activity",
+      "joinedDate": "Joined {date}",
+      "level": "Level {level}",
+      "experience": "{current}/{total} XP",
+      "badges": "Badges",
+      "noBadges": "No badges earned yet"
+    },
+    "messages": {
+      "friendAdded": "Friend added successfully!",
+      "friendRemoved": "Friend removed",
+      "postShared": "Update posted!",
+      "commentAdded": "Comment added!",
+      "profileUpdated": "Profile updated!"
+    }
+  },
   "common": {
     "loading": "Loading...",
     "error": "Something went wrong",

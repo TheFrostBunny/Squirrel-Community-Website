@@ -8,6 +8,7 @@ import { FloatingSquirrels } from '@/components/FloatingSquirrels';
 import { SquirrelNeighborhood } from '@/components/SquirrelNeighborhood';
 import { EasterEggs } from '@/components/EasterEggs';
 import { GameCenter } from '@/components/GameCenter';
+import SocialHub from '@/components/SocialHub';
 
 const Index = () => {
   return (
@@ -22,6 +23,7 @@ const Index = () => {
         <SquirrelCare />
         <GameCenter />
         <SquirrelNeighborhood />
+        <SocialHub />
         <CommunityInfo />
         <EasterEggs />
       </main>
