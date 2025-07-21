@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useText } from '@/hooks/useText';
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -20,15 +20,24 @@ import {
   Award,
   Star,
   Calendar,
-  ThumbsUp
+  ThumbsUp,
+  Trophy,
+  Gift,
+  Crown
 } from 'lucide-react';
 
 interface Friend {
   id: string;
   name: string;
+  squirrelName: string;
   avatar: string;
   online: boolean;
   level: number;
+  mood: string;
+  nuts: number;
+  achievements: number;
+  personalityTrait: string;
+  lastSeen: string;
 }
 
 interface Post {
@@ -50,20 +59,77 @@ interface Comment {
   timestamp: Date;
 }
 
+interface NutNote {
+  id: string;
+  from: string;
+  message: string;
+  emoji: string;
+  timestamp: string;
+}
+
 const SocialHub = () => {
   const { getText } = useText();
-  const [activeTab, setActiveTab] = useState('friends');
+  const [activeTab, setActiveTab] = useState('neighborhood');
   const [searchFriend, setSearchFriend] = useState('');
   const [newPost, setNewPost] = useState('');
   const [newComment, setNewComment] = useState('');
   const [showComments, setShowComments] = useState<Record<string, boolean>>({});
+  const [selectedNeighbor, setSelectedNeighbor] = useState<Friend | null>(null);
 
-  // Mock data
+  // Mock data - Enhanced friends with neighborhood data
   const [friends] = useState<Friend[]>([
-    { id: '1', name: 'NuttyBuddy', avatar: '🐿️', online: true, level: 15 },
-    { id: '2', name: 'AcornHunter', avatar: '🌰', online: false, level: 12 },
-    { id: '3', name: 'TreeHopper', avatar: '🌳', online: true, level: 18 },
-    { id: '4', name: 'ForestFriend', avatar: '🍂', online: true, level: 9 }
+    { 
+      id: '1', 
+      name: 'NuttyBuddy', 
+      squirrelName: 'Whiskers',
+      avatar: '🐿️', 
+      online: true, 
+      level: 15,
+      mood: 'happy',
+      nuts: 342,
+      achievements: 6,
+      personalityTrait: 'Energetic',
+      lastSeen: 'now'
+    },
+    { 
+      id: '2', 
+      name: 'AcornHunter', 
+      squirrelName: 'Fluffy',
+      avatar: '🌰', 
+      online: false, 
+      level: 12,
+      mood: 'playful',
+      nuts: 567,
+      achievements: 9,
+      personalityTrait: 'Curious',
+      lastSeen: '2h ago'
+    },
+    { 
+      id: '3', 
+      name: 'TreeHopper', 
+      squirrelName: 'Squeaky',
+      avatar: '🌳', 
+      online: true, 
+      level: 18,
+      mood: 'sleepy',
+      nuts: 189,
+      achievements: 3,
+      personalityTrait: 'Sleepy',
+      lastSeen: 'now'
+    },
+    { 
+      id: '4', 
+      name: 'ForestFriend', 
+      squirrelName: 'Chippy',
+      avatar: '🍂', 
+      online: true, 
+      level: 9,
+      mood: 'mischievous',
+      nuts: 823,
+      achievements: 12,
+      personalityTrait: 'Friendly',
+      lastSeen: '1h ago'
+    }
   ]);
 
   const [posts, setPosts] = useState<Post[]>([
@@ -97,6 +163,23 @@ const SocialHub = () => {
     }
   ]);
 
+  const [nutNotes, setNutNotes] = useState<NutNote[]>([
+    {
+      id: '1',
+      from: 'NuttyBuddy',
+      message: 'Your squirrel looks so happy! 🌰',
+      emoji: '🌰',
+      timestamp: '5m ago'
+    },
+    {
+      id: '2',
+      from: 'TreeHopper',
+      message: 'Want to be squirrel friends?',
+      emoji: '🤝',
+      timestamp: '1h ago'
+    }
+  ]);
+
   const userProfile = {
     name: 'You',
     avatar: '🐿️',
@@ -108,9 +191,44 @@ const SocialHub = () => {
     totalFriends: friends.length
   };
 
+  const getMoodEmoji = (mood: string) => {
+    switch (mood) {
+      case 'happy': return '😊';
+      case 'playful': return '😄';
+      case 'sleepy': return '😴';
+      case 'mischievous': return '😈';
+      case 'curious': return '🤔';
+      default: return '😊';
+    }
+  };
+
+  const leaderboard = [...friends]
+    .sort((a, b) => b.nuts - a.nuts)
+    .slice(0, 10);
+
   const filteredFriends = friends.filter(friend =>
-    friend.name.toLowerCase().includes(searchFriend.toLowerCase())
+    friend.name.toLowerCase().includes(searchFriend.toLowerCase()) ||
+    friend.squirrelName.toLowerCase().includes(searchFriend.toLowerCase())
   );
+
+  const visitNeighbor = (friend: Friend) => {
+    setSelectedNeighbor(friend);
+  };
+
+  const sendNutNote = (friendId: string, message: string, emoji: string) => {
+    const newNote: NutNote = {
+      id: Date.now().toString(),
+      from: 'You',
+      message,
+      emoji,
+      timestamp: 'just now'
+    };
+    setNutNotes(prev => [newNote, ...prev]);
+    toast({
+      title: 'Nut note sent!',
+      description: `Sent "${message}" to your friend`
+    });
+  };
 
   const handleLikePost = (postId: string) => {
     setPosts(posts.map(post => 
@@ -186,18 +304,26 @@ const SocialHub = () => {
         </div>
 
         <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
-          <TabsList className="grid w-full grid-cols-3 mb-8">
-            <TabsTrigger value="friends" className="flex items-center gap-2">
+          <TabsList className="grid w-full grid-cols-5 mb-8">
+            <TabsTrigger value="neighborhood" className="flex items-center gap-2">
               <Users className="h-4 w-4" />
-              {getText('socialHub.tabs.friends')}
+              Neighborhood
+            </TabsTrigger>
+            <TabsTrigger value="friends" className="flex items-center gap-2">
+              <Heart className="h-4 w-4" />
+              Friends
             </TabsTrigger>
             <TabsTrigger value="feed" className="flex items-center gap-2">
               <MessageCircle className="h-4 w-4" />
-              {getText('socialHub.tabs.feed')}
+              Feed
+            </TabsTrigger>
+            <TabsTrigger value="leaderboard" className="flex items-center gap-2">
+              <Trophy className="h-4 w-4" />
+              Leaderboard
             </TabsTrigger>
             <TabsTrigger value="profile" className="flex items-center gap-2">
               <User className="h-4 w-4" />
-              {getText('socialHub.tabs.profile')}
+              Profile
             </TabsTrigger>
           </TabsList>
 
@@ -234,7 +360,7 @@ const SocialHub = () => {
                           <div>
                             <h4 className="font-semibold">{friend.name}</h4>
                             <p className="text-sm text-muted-foreground">
-                              {getText('socialHub.profile.level', { level: friend.level })}
+                              {friend.squirrelName} • Lv.{friend.level}
                             </p>
                           </div>
                         </div>
@@ -247,9 +373,14 @@ const SocialHub = () => {
                           <MessageCircle className="h-4 w-4 mr-1" />
                           {getText('socialHub.friends.sendMessage')}
                         </Button>
-                        <Button variant="outline" size="sm" className="flex-1">
+                        <Button 
+                          variant="outline" 
+                          size="sm" 
+                          className="flex-1"
+                          onClick={() => visitNeighbor(friend)}
+                        >
                           <User className="h-4 w-4 mr-1" />
-                          {getText('socialHub.friends.viewProfile')}
+                          Visit
                         </Button>
                       </div>
                     </Card>
@@ -480,6 +611,30 @@ const SocialHub = () => {
             </div>
           </TabsContent>
         </Tabs>
+        {selectedNeighbor && (
+          <Card className="mt-6 border-primary/50">
+            <CardHeader className="text-center">
+              <CardTitle>Visiting {selectedNeighbor.squirrelName}'s Nest</CardTitle>
+              <div className="text-8xl my-4">{getMoodEmoji(selectedNeighbor.mood)}</div>
+              <p className="text-muted-foreground">
+                {selectedNeighbor.squirrelName} is {selectedNeighbor.personalityTrait.toLowerCase()} and loves to play!
+              </p>
+            </CardHeader>
+            <CardContent className="text-center space-y-4">
+              <div className="flex justify-center gap-4">
+                <Button onClick={() => sendNutNote(selectedNeighbor.id, 'Beautiful nest!', '🏠')}>
+                  🏠 Compliment Nest
+                </Button>
+                <Button onClick={() => sendNutNote(selectedNeighbor.id, 'Want to play together?', '🎮')}>
+                  🎮 Play Together
+                </Button>
+                <Button onClick={() => setSelectedNeighbor(null)} variant="outline">
+                  👋 Leave Visit
+                </Button>
+              </div>
+            </CardContent>
+          </Card>
+        )}
       </div>
     </section>
   );
