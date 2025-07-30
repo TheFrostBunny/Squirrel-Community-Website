@@ -1,4 +1,5 @@
 import { useText } from '@/hooks/useText';
+import { Link } from 'react-router-dom';
 
 export const Footer = () => {
   const { getText } = useText();
@@ -27,8 +28,8 @@ export const Footer = () => {
           <div>
             <h3 className="font-semibold text-squirrel-brown mb-4">{getText('footer.quickLinks.title')}</h3>
             <ul className="space-y-2 text-muted-foreground">
-              <li><a href="#home" className="hover:text-squirrel-brown transition-colors">{getText('footer.quickLinks.home')}</a></li>
-              <li><a href="#join-discord" className="hover:text-squirrel-brown transition-colors">{getText('footer.quickLinks.joinDiscord')}</a></li>
+              <li><Link to="/" className="hover:text-squirrel-brown transition-colors">{getText('footer.quickLinks.home')}</Link></li>
+              <li><a href="https://discord.com/invite/UGUjdgD5Mb" target='-blank' className="hover:text-squirrel-brown transition-colors">{getText('footer.quickLinks.joinDiscord')}</a></li>
               <li><a href="#squirrel-care" className="hover:text-squirrel-brown transition-colors">{getText('footer.quickLinks.squirrelCare')}</a></li>
               <li><a href="#community-info" className="hover:text-squirrel-brown transition-colors">{getText('footer.quickLinks.communityInfo')}</a></li>
             </ul>
@@ -38,7 +39,9 @@ export const Footer = () => {
           <div>
             <h3 className="font-semibold text-squirrel-brown mb-4">{getText('footer.community.title')}</h3>
             <ul className="space-y-2 text-muted-foreground">
+              <a href="https://discord.com/invite/UGUjdgD5Mb" target="_blank" rel="noopener noreferrer">
               <li><span className="hover:text-squirrel-brown transition-colors cursor-pointer">{getText('footer.community.discordServer')}</span></li>
+              </a>
               <li><span className="hover:text-squirrel-brown transition-colors cursor-pointer">{getText('footer.community.communityRules')}</span></li>
               <li><span className="hover:text-squirrel-brown transition-colors cursor-pointer">{getText('footer.community.eventsCalendar')}</span></li>
               <li><span className="hover:text-squirrel-brown transition-colors cursor-pointer">{getText('footer.community.support')}</span></li>

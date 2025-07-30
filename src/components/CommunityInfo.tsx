@@ -21,11 +21,7 @@ export const CommunityInfo = () => {
   ];
 
   const events = [
-    { name: 'Weekly Game Night', time: 'Every Friday 8PM EST', description: 'Community gaming sessions' },
-    { name: 'Art Share Sunday', time: 'Every Sunday', description: 'Share your creative works' },
-    { name: 'Movie Night', time: 'Every Saturday 9PM EST', description: 'Watch movies together' },
-    { name: 'Trivia Tuesday', time: 'Every Tuesday 7PM EST', description: 'Test your knowledge' },
-    { name: 'Seasonal Events', time: 'Monthly', description: 'Special themed celebrations' }
+    { name: 'Coming Soon', time: 'Soon', description: 'it going to be fun :)' },
   ];
 
   const highlights = [

@@ -43,7 +43,7 @@ export const JoinDiscord = () => {
           </Button>
           
           <div className="flex justify-center gap-2 flex-wrap">
-            <Badge variant="secondary">500+ Members</Badge>
+            <Badge variant="secondary">80+ Members</Badge>
             <Badge variant="secondary">Active Daily</Badge>
             <Badge variant="secondary">All Welcome</Badge>
           </div>
@@ -71,7 +71,7 @@ export const JoinDiscord = () => {
           <h3 className="text-2xl font-bold text-squirrel-brown mb-6">Why Our Community Rocks</h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             <div>
-              <div className="text-3xl font-bold text-autumn-orange">500+</div>
+              <div className="text-3xl font-bold text-autumn-orange">80+</div>
               <div className="text-sm text-muted-foreground">Happy Members</div>
             </div>
             <div>

@@ -3,14 +3,15 @@ import { Button } from '@/components/ui/button';
 import { Menu, X } from 'lucide-react';
 import { ThemeToggle } from './ThemeToggle';
 import { useText } from '@/hooks/useText';
+import { Link } from 'react-router-dom';
 
 export const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
   const { getText } = useText();
 
   const navItems = [
-    { label: getText('navigation.menuItems.home'), href: '#home' },
-    { label: getText('navigation.menuItems.joinDiscord'), href: '#join-discord' },
+    { label: getText('navigation.menuItems.home'), href: '/' },
+    { label: getText('navigation.menuItems.Eggs'), href: '/Eggs' },
     { label: getText('navigation.menuItems.squirrelCare'), href: '#squirrel-care' },
     { label: getText('navigation.menuItems.community'), href: '#community-info' }
   ];
@@ -28,22 +29,35 @@ export const Navigation = () => {
       <div className="max-w-6xl mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
+          <Link to="/">
           <div className="flex items-center gap-2">
             <span className="text-2xl">🐿️</span>
             <span className="font-bold text-lg text-squirrel-brown">{getText('navigation.logo')}</span>
           </div>
+          </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center gap-6">
-            {navItems.map((item) => (
-              <button
-                key={item.label}
-                onClick={() => scrollToSection(item.href)}
-                className="text-muted-foreground hover:text-squirrel-brown transition-colors"
-              >
-                {item.label}
-              </button>
-            ))}
+            {navItems.map((item) =>
+              item.href.startsWith('/') ? (
+                <Link
+                  key={item.label}
+                  to={item.href}
+                  className="text-muted-foreground hover:text-squirrel-brown transition-colors"
+                  onClick={() => setIsOpen(false)}
+                >
+                  {item.label}
+                </Link>
+              ) : (
+                <button
+                  key={item.label}
+                  onClick={() => scrollToSection(item.href)}
+                  className="text-muted-foreground hover:text-squirrel-brown transition-colors"
+                >
+                  {item.label}
+                </button>
+              )
+            )}
             <ThemeToggle />
             <Button 
               className="btn-squirrel"
@@ -82,7 +96,7 @@ export const Navigation = () => {
               <Button 
                 className="btn-squirrel mx-4 mt-2"
                 onClick={() => {
-                  window.open('https://discord.gg/squirrel-community', '_blank');
+                  window.open('https://discord.com/invite/UGUjdgD5Mb', '_blank');
                   setIsOpen(false);
                 }}
               >

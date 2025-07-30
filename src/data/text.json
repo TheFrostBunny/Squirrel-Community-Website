@@ -5,14 +5,15 @@
       "home": "Home",
       "joinDiscord": "Join Discord",
       "squirrelCare": "Squirrel Care",
-      "community": "Community"
+      "community": "Community",
+      "Eggs": "Easter Eggs"
     },
     "buttons": {
       "joinDiscord": "Join Discord"
     }
   },
   "hero": {
-    "badge": "✨ 500+ Happy Members & Growing!",
+    "badge": "✨ 80+ Happy Members & Growing!",
     "title": {
       "welcomeTo": "Welcome to",
       "squirrelCommunity": "Squirrel Community"
@@ -209,7 +210,7 @@
       }
     },
     "stats": {
-      "members": "500+ Active Members",
+      "members": "80+ Active Members",
       "online": "Always Someone Online",
       "channels": "Multiple Topic Channels"
     },

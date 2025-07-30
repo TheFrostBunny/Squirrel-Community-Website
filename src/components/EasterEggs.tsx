@@ -13,8 +13,23 @@ interface EasterEgg {
   reward?: string;
 }
 
+const LOCAL_KEY = 'squirrel_easter_eggs';
+
+function loadEggs(defaultEggs: EasterEgg[]) {
+  const saved = localStorage.getItem(LOCAL_KEY);
+  if (!saved) return defaultEggs;
+  try {
+    const unlockedIds: string[] = JSON.parse(saved);
+    return defaultEggs.map(egg =>
+      unlockedIds.includes(egg.id) ? { ...egg, unlocked: true } : egg
+    );
+  } catch {
+    return defaultEggs;
+  }
+}
+
 export const EasterEggs = () => {
-  const [easterEggs, setEasterEggs] = useState<EasterEgg[]>([
+  const defaultEggs: EasterEgg[] = [
     {
       id: 'konami',
       name: 'Konami Code',
@@ -69,8 +84,9 @@ export const EasterEggs = () => {
       rarity: 'legendary',
       reward: 'Rainbow squirrel skin'
     }
-  ]);
+  ];
 
+  const [easterEggs, setEasterEggs] = useState<EasterEgg[]>(() => loadEggs(defaultEggs));
   const [konamiSequence] = useState(['ArrowUp', 'ArrowUp', 'ArrowDown', 'ArrowDown', 'ArrowLeft', 'ArrowRight', 'ArrowLeft', 'ArrowRight', 'KeyB', 'KeyA']);
   const [currentSequence, setCurrentSequence] = useState<string[]>([]);
   const [clickCount, setClickCount] = useState(0);
@@ -104,6 +120,12 @@ export const EasterEggs = () => {
       unlockEasterEgg('midnight');
     }
   }, []);
+
+  // Save unlocked eggs to localStorage whenever they change
+  useEffect(() => {
+    const unlockedIds = easterEggs.filter(e => e.unlocked).map(e => e.id);
+    localStorage.setItem(LOCAL_KEY, JSON.stringify(unlockedIds));
+  }, [easterEggs]);
 
   const unlockEasterEgg = (id: string) => {
     setEasterEggs(prev => prev.map(egg => 

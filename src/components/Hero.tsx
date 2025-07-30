@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
-import squirrelMascot from '@/assets/squirrel-mascot.png';
 import forestHeroBg from '@/assets/forest-hero-bg.jpg';
 import { useText } from '@/hooks/useText';
 
@@ -38,7 +37,7 @@ export const Hero = () => {
   };
 
   const handleJoinDiscord = () => {
-    window.open('https://discord.gg/squirrel-community', '_blank');
+    window.open('https://discord.com/invite/UGUjdgD5Mb', '_blank');
   };
 
   const scrollToCommunity = () => {
@@ -102,25 +101,6 @@ export const Hero = () => {
           <div className="relative">
             {/* Glow effect */}
             <div className="absolute inset-0 bg-gradient-to-r from-autumn-orange/30 to-forest-green/30 rounded-full blur-xl group-hover:blur-2xl transition-all duration-500 opacity-0 group-hover:opacity-100"></div>
-            
-            {/* Main mascot */}
-            <img 
-              src={squirrelMascot} 
-              alt={getText('hero.mascot.alt')} 
-              className={`relative w-80 h-80 mx-auto drop-shadow-2xl transition-all duration-500 group-hover:scale-110 ${
-                mascotClicks > 3 ? 'animate-wiggle' : 'squirrel-bounce'
-              }`}
-              style={{
-                transform: `translate(${mousePosition.x * 8}px, ${mousePosition.y * 4}px)`,
-              }}
-            />
-            
-            {/* Floating hearts on click */}
-            {mascotClicks > 0 && (
-              <div className="absolute -top-4 -right-4 text-2xl animate-bounce">
-                {'❤️'.repeat(Math.min(mascotClicks, 3))}
-              </div>
-            )}
           </div>
         </div>
 
@@ -199,17 +179,6 @@ export const Hero = () => {
             </div>
           </div>
         )}
-
-        {/* Scroll indicator */}
-        <div 
-          className="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce"
-          style={{ animationDelay: '1.2s' }}
-        >
-          <div className="text-muted-foreground text-center">
-            <div className="text-sm mb-2">{getText('hero.scrollIndicator')}</div>
-            <div className="text-2xl">⬇️</div>
-          </div>
-        </div>
       </div>
     </section>
   );

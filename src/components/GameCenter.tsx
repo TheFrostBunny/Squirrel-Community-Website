@@ -435,6 +435,9 @@ export const GameCenter = () => {
           <p className="text-xl text-muted-foreground">
             Play mini-games to earn nuts, coins, and experience!
           </p>
+          <span className="inline-block mt-2 px-4 py-1 rounded-full bg-yellow-200 text-yellow-900 font-semibold text-sm shadow">
+            Beta – This feature is still under development!
+          </span>
         </div>
 
         <Tabs defaultValue="games" className="w-full">
